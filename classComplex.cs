@@ -4,11 +4,18 @@ public class Complex
 {
 	public Complex(double _real, double _imag)
 	{
-
+        real = _real;
+        imaginary = _imag;
+        isCartesian = true;
+        //Calculate radius and angle
 	}
-    public Complex(double _real, double _imag, byte polarMark)
-    {
 
+    public Complex(double _rad, double _ang, byte _isCartesian)
+    {
+        radius = _rad;
+        angle = _ang;
+        isCartesian = false;
+        //Calculate real and imaginary
     }
     double real;
     double imaginary;
@@ -19,6 +26,14 @@ public class Complex
     //Cartesian: a + bi
     //Polar: rcos ang + rsin ang i
     //Exponential: r e^(i angle)
+    printCartesian()
+    {
+        return (real.ToString() + " + " + imaginary.ToString() + "i");
+    }
+    printPolar()
+    {
+        return (radius.ToString() + " cos (" + angle.ToString() + ")" + " + " + radius.ToString() + "i " + "sin(" + angle.ToString() + ")");
+    }
 
 
     //add override for stdout << "real + imaginary i"
