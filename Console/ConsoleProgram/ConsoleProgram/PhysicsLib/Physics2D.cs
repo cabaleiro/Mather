@@ -1,12 +1,12 @@
 ﻿using System;
 
-public class Phyisics2D
+public class Physics2D
 {
 	public Physics2D()
 	{
 	}
 
-    public static ResultantForce()
+    public static void ResultantForce()
     {
         //Input List<Vector2>
         //Create new Vector2

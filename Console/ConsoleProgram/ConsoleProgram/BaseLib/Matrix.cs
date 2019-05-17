@@ -227,10 +227,11 @@ public class Matrix
         return matrix;
     }
 
-    //Add TransformMatrix maker
-    public static Matrix TransformMatrix()
+    //Add TransformMatrix maker. Rotation, Translation, Skew
+    public static Matrix TransformMatrix(int _dimensions)
     {
-
+        Matrix transform = new Matrix(_dimensions+1, _dimensions+1);
+        return transform;
     }
     
     //parse the matrix from string

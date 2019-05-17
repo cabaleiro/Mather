@@ -14,12 +14,12 @@ public class Vector3
     private double z;
     private double length;
 
-    public static calcLength()
+    public void calcLength()
     {
-        length = Math.Sqrt(x ^ 2 + y ^ 2 + z ^ 2);
+        length = Math.Sqrt( Math.Pow(x, 2) + Math.Pow(y, 2) + Math.Pow(z, 2));
     }
 
-    public static ToString()
+    public override string ToString()
     {
         return "(" + x.ToString() + ", " + y.ToString() + ", " + z.ToString() + ")";
     }
@@ -40,7 +40,7 @@ public class Vector3
         resultVector.z = _vec1.z - _vec2.z;
         return resultVector;
     }
-    public static Vector3 operator *(Vector3 _vec1, Vector3 _vec2)
+    public static double operator *(Vector3 _vec1, Vector3 _vec2)
     {
         double resultVal = 0;
         resultVal += _vec1.x * _vec2.x;
@@ -48,7 +48,7 @@ public class Vector3
         resultVal += _vec1.z * _vec2.z;
         return resultVal;
     }
-    public static Vector3 operator *(Vector3 _vec1, double _constant)
+    public static double operator *(Vector3 _vec1, double _constant)
     {
         double resultVal = 0;
         resultVal += _vec1.x * _constant;
@@ -56,7 +56,7 @@ public class Vector3
         resultVal += _vec1.z * _constant;
         return resultVal;
     }
-    public static Vector3 operator *(Vector3 _vec1, int _constant)
+    public static double operator *(Vector3 _vec1, int _constant)
     {
         double resultVal = 0;
         resultVal += _vec1.x * _constant;
@@ -70,6 +70,6 @@ public class Vector3
         resultVector.x = (_vec1.y * _vec2.z) - (_vec1.z * _vec2.y);
         resultVector.y = (_vec1.x * _vec2.z) - (_vec1.z * _vec2.x);
         resultVector.z = (_vec1.x * _vec2.y) - (_vec1.y * _vec2.x);
-        return resultVal;
+        return resultVector;
     }
 }
