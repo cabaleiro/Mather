@@ -44,6 +44,19 @@ public class Matrix
     {
         for (int i = 0; i < rows; i++) mat[i, _k] = _v[i, 0];
     }
+    public Matrix GetRow(int _k)
+    {
+        Matrix m = new Matrix(1, cols);
+        for (int i = 0; i < cols; i++) m[0, i] = mat[_k, i];
+        return m;
+    }
+
+    public void SetRow(Matrix _v, int _k)
+    {
+        for (int i = 0; i < cols; i++) mat[_k, i] = _v[0, i];
+    }
+
+
 
     public void MakeLU()                        // Function for LU decomposition
     {
@@ -156,8 +169,8 @@ public class Matrix
                 matrix[i, j] = mat[i, j];
         return matrix;
     }
-
-    public static Matrix SubsForth(Matrix _a, Matrix _b)          // Function solves _A x = _b for _a as a lower triangular matrix
+    //HELPER, solves _A x = _b for _a as a lower triangular matrix
+    public static Matrix SubsForth(Matrix _a, Matrix _b)
     {
         if (_a.L == null) _a.MakeLU();
         int n = _a.rows;
@@ -171,8 +184,8 @@ public class Matrix
         }
         return x;
     }
-
-    public static Matrix SubsBack(Matrix _a, Matrix _b)           // Function solves _A x = _b for _a as an upper triangular matrix
+    //HELPER, solves _A x = _b for _a as an upper triangular matrix
+    public static Matrix SubsBack(Matrix _a, Matrix _b)           
     {
         if (_a.L == null) _a.MakeLU();
         int n = _a.rows;
@@ -212,6 +225,12 @@ public class Matrix
             for (int j = 0; j < _cols; j++)
                 matrix[i, j] = random.Next(-_dispersion, _dispersion);
         return matrix;
+    }
+
+    //Add TransformMatrix maker
+    public static Matrix TransformMatrix()
+    {
+
     }
     
     //parse the matrix from string
