@@ -57,8 +57,8 @@ public class Matrix
     }
 
 
-
-    public void MakeLU()                        // Function for LU decomposition
+    // Function for LU decomposition
+    public void MakeLU()                        
     {
         if (!IsSquare()) throw new MException("The matrix is not square!");
         L = IdentityMatrix(rows, cols);
@@ -75,7 +75,8 @@ public class Matrix
         for (int k = 0; k < cols - 1; k++)
         {
             p = 0;
-            for (int i = k; i < rows; i++)      //find the row with the biggest pivot
+            //find the row with the biggest pivot
+            for (int i = k; i < rows; i++)      
             {
                 if (Math.Abs(U[i, k]) > p)
                 {
@@ -86,8 +87,8 @@ public class Matrix
             //check if singular
             if (p == 0)
                 throw new MException("The matrix is singular!");
-
-            pom1 = pi[k]; pi[k] = pi[k0]; pi[k0] = pom1;    //switch two rows in permutation matrix
+            //switch two rows in permutation matrix
+            pom1 = pi[k]; pi[k] = pi[k0]; pi[k0] = pom1;    
 
             for (int i = 0; i < k; i++)
             {
@@ -95,8 +96,8 @@ public class Matrix
             }
 
             if (k != k0) detOfP *= -1;
-
-            for (int i = 0; i < cols; i++)                  //switch rows in U
+            //switch rows in U
+            for (int i = 0; i < cols; i++)                  
             {
                 pom2 = U[k, i]; U[k, i] = U[k0, i]; U[k0, i] = pom2;
             }
@@ -199,8 +200,9 @@ public class Matrix
         }
         return x;
     }
-
-    public static Matrix ZeroMatrix(int _rows, int _cols)       // Function generates the zero matrix
+    
+    //generates the zero matrix
+    public static Matrix ZeroMatrix(int _rows, int _cols)       
     {
         Matrix matrix = new Matrix(_rows, _cols);
         for (int i = 0; i < _rows; i++)
@@ -208,16 +210,16 @@ public class Matrix
                 matrix[i, j] = 0;
         return matrix;
     }
-
-    public static Matrix IdentityMatrix(int _rows, int _cols)   // Function generates the identity matrix
+    //generates the identity matrix
+    public static Matrix IdentityMatrix(int _rows, int _cols)   
     {
         Matrix matrix = ZeroMatrix(_rows, _cols);
         for (int i = 0; i < Math.Min(_rows, _cols); i++)
             matrix[i, i] = 1;
         return matrix;
     }
-
-    public static Matrix RandomMatrix(int _rows, int _cols, int _dispersion)       // Function generates the random matrix
+    //generates the random matrix
+    public static Matrix RandomMatrix(int _rows, int _cols, int _dispersion)       
     {
         Random random = new Random();
         Matrix matrix = new Matrix(_rows, _cols);

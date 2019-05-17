@@ -12,7 +12,10 @@ namespace ConsoleProgram
             Vector3 a = new Vector3(10, 10, 10);
             Vector3 b = new Vector3(1, 5, 3);
 
+            Matrix c = Matrix.Parse("10 0 \r\n 10 0");
+
             Console.WriteLine((a^b).ToString());
+            Console.WriteLine(c.ToString());
 
 
 
