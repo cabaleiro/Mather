@@ -54,6 +54,14 @@ public class Complex
         //return (radius.ToString() + " cos (" + angle.ToString() + ")" + " + " + radius.ToString() + "i " + "sin(" + angle.ToString() + ")");
         return (radius.ToString() + " |_ " + angle.ToString());
     }
+
+    public static Exponent(double _exp)
+    {
+        Complex resultNum = new Complex();
+        resultNum.radius = radius ^ _exp;
+        resultNum.angle = angle * _exp;
+    }
+
     public static Complex operator +(Complex _num1, Complex _num2)
     {
         Complex resultNum = new Complex();
