@@ -9,7 +9,10 @@ namespace ConsoleProgram
     {
         static void Main(string[] args)
         {
+            Vector3 a = new Vector3(10, 10, 10);
+            Vector3 b = new Vector3(1, 5, 3);
 
+            Console.WriteLine((a^b).ToString());
 
 
 

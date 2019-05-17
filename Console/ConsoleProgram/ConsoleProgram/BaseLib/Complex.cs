@@ -39,7 +39,14 @@ public class Complex
     public void makePolar()
     {
         radius = Math.Sqrt(Math.Pow(real, 2) + Math.Pow(imaginary, 2));
-        angle = Math.Atan(imaginary / real);
+        if (real != 0)
+        {
+            angle = Math.Atan(imaginary / real);
+        }
+        else
+        {
+            angle = 90;
+        }
     }
     public override string ToString()
     {
@@ -50,20 +57,63 @@ public class Complex
     }
     public string printCartesian()
     {
-        return (real.ToString() + " + " + imaginary.ToString() + "i");
+        string printer = "";
+        if (real != 0)
+        {
+            printer += real.ToString();
+            if (imaginary != 0)
+            {
+                printer += " + ";
+                if (imaginary == 1)
+                {
+                    printer += "i";
+                    return printer;
+                }
+                else
+                {
+                    printer += imaginary.ToString();
+                    printer += " i";
+                    return printer;
+                }
+            }
+            else
+            {
+                return printer;
+            }
+        }
+        else
+        {
+            if (imaginary != 0)
+            {
+                if (imaginary == 1)
+                {
+                    printer += "i";
+                    return printer;
+                }
+                else
+                {
+                    printer += imaginary.ToString();
+                    printer += " i";
+                    return printer;
+                }
+            }
+            else
+            {
+                return "0";
+            }
+        }
     }
     public string printPolar()
     {
         //return (radius.ToString() + " cos (" + angle.ToString() + ")" + " + " + radius.ToString() + "i " + "sin(" + angle.ToString() + ")");
-        return (radius.ToString() + " |_ " + angle.ToString());
-    }
-
-    public Complex Exponent(double _exp)
-    {
-        Complex resultNum = new Complex(false);
-        resultNum.radius = Math.Pow(radius, _exp);
-        resultNum.angle = angle * _exp;
-        return resultNum;
+        if (radius != 0)
+        { 
+            return (radius.ToString() + " |_ " + angle.ToString() + "°");
+        }
+        else
+        {
+            return "0";
+        }
     }
 
     public static Complex operator +(Complex _num1, Complex _num2)
@@ -83,17 +133,27 @@ public class Complex
     public static Complex operator *(Complex _num1, Complex _num2)
     {
         Complex resultNum = new Complex(false);
-        resultNum.real = _num1.radius * _num2.radius;
-        resultNum.imaginary = _num1.angle + _num2.angle;
+        resultNum.radius = _num1.radius * _num2.radius;
+        resultNum.angle = _num1.angle + _num2.angle;
+        resultNum.makeCartesian();
         return resultNum;
     }
     public static Complex operator /(Complex _num1, Complex _num2)
     {
         Complex resultNum = new Complex(false);
-        resultNum.real = _num1.radius / _num2.radius;
-        resultNum.imaginary = _num1.angle - _num2.angle;
+        resultNum.radius = _num1.radius / _num2.radius;
+        resultNum.angle = _num1.angle - _num2.angle;
+        resultNum.makeCartesian();
         return resultNum;
     }
+    public static Complex operator ^(Complex _vec1, double _exp)
+    {
+        Complex resultNum = new Complex(false);
+        resultNum.radius = Math.Pow(_vec1.radius, _exp);
+        resultNum.angle = _vec1.angle * _exp;
+        return resultNum;
+    }
+
     //add override for stdout << "real + imaginary i"
     //add override for root and ^^ using DeMoivre's Theorem
 }

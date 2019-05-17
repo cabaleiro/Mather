@@ -68,7 +68,7 @@ public class Vector3
     {
         Vector3 resultVector = new Vector3();
         resultVector.x = (_vec1.y * _vec2.z) - (_vec1.z * _vec2.y);
-        resultVector.y = (_vec1.x * _vec2.z) - (_vec1.z * _vec2.x);
+        resultVector.y = -(_vec1.x * _vec2.z) + (_vec1.z * _vec2.x);
         resultVector.z = (_vec1.x * _vec2.y) - (_vec1.y * _vec2.x);
         return resultVector;
     }
