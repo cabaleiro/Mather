@@ -29,8 +29,9 @@ public class Complex
     private bool isCartesian;
 
     //Cartesian: a + bi
-    //Polar: rcos ang + rsin ang i
+    //Polar: rcos ang + rsin ang i OR radiusLangle
     //Exponential: r e^(i angle)
+
     public void makeCartesian()
     {
         real = radius * Math.Cos(angle);
@@ -48,6 +49,7 @@ public class Complex
             angle = 90;
         }
     }
+    //Text output
     public override string ToString()
     {
         if (isCartesian == true)
@@ -116,6 +118,7 @@ public class Complex
         }
     }
 
+    //Operators
     public static Complex operator +(Complex _num1, Complex _num2)
     {
         Complex resultNum = new Complex(true);
