@@ -45,6 +45,7 @@
     <Compile Include="Geometry\Geometry.cs" />
     <Compile Include="BaseLib\MathosParser.cs" />
     <Compile Include="BaseLib\Matrix.cs" />
+    <Compile Include="MultiLib\OwnParser.cs" />
     <Compile Include="PhysicsLib\Physics2D.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -52,8 +53,6 @@
     <Compile Include="BaseLib\Vector2.cs" />
     <Compile Include="BaseLib\Vector3.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="MultiLib\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
